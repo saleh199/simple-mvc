@@ -7,17 +7,19 @@ var logger = require('morgan');
 //var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routesPath = './application/routes/';
-var fs = require('fs');
+//var fs = require('fs');
 
 var app = express();
 
+var routesPath = 'application/routes/';
+require('./libs/autoload')(app, path.join(__dirname, routesPath));
+
 //autoload routes
-fs.readdirSync(routesPath).forEach(function(file){
-  var route = routesPath + file;
-  console.info('Load route: ' + route);
-  require(route)(app);
-});
+// fs.readdirSync(routesPath).forEach(function(file){
+//   var route = routesPath + file;
+//   console.info('Load route: ' + route);
+//   require(route)(app);
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname + '/application/', 'views'));
@@ -28,6 +30,7 @@ app.set('view engine', 'hjs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -1,7 +1,7 @@
 'use strict';
 
 var paths = {
-  js: ['*.js', 'application/**/*.js', 'bin/www', '!node_modules/**/*.js'],
+  js: ['*.js', 'application/**/*.js', 'bin/www', 'libs/*.js', '!node_modules/**/*.js'],
   configFiles: ['application/config/*.json', 'Gruntfile.js']
 };
 

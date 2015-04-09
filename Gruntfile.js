@@ -53,4 +53,4 @@ module.exports = function(grunt){
   grunt.hook.push('jshint', 200);
 
   grunt.registerTask('default', ['hook']);
-}
+};

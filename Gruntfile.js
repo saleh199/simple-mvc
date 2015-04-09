@@ -1,7 +1,8 @@
 'use strict';
 
 var paths = {
-  js: ['*.js', 'application/**/*.js', '!node_modules/**/*.js']
+  js: ['*.js', 'application/**/*.js', 'bin/www', '!node_modules/**/*.js'],
+  configFiles: ['application/config/*.json', 'Gruntfile.js']
 };
 
 module.exports = function(grunt){
@@ -14,6 +15,12 @@ module.exports = function(grunt){
         tasks: ['jshint'],
         options: {
           livereload: true
+        }
+      },
+      configFiles: {
+        files: paths.configFiles,
+        options: {
+          reload: true
         }
       }
     },
@@ -34,7 +41,10 @@ module.exports = function(grunt){
           ext: 'js',
           nodeArgs: ['--debug'],
           delayTime: 1,
-          cwd: __dirname
+          cwd: __dirname,
+          env: {
+            NODE_CONFIG_DIR: 'application/config'
+          }
         }
       }
     },

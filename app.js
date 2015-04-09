@@ -7,10 +7,17 @@ var logger = require('morgan');
 //var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./application/routes/index');
-var users = require('./application/routes/users');
+var routesPath = './application/routes/';
+var fs = require('fs');
 
 var app = express();
+
+//autoload routes
+fs.readdirSync(routesPath).forEach(function(file){
+  var route = routesPath + file;
+  console.info('Load route: ' + route);
+  require(route)(app);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname + '/application/', 'views'));
@@ -23,9 +30,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

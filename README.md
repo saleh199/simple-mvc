@@ -38,8 +38,10 @@ $ grunt
 
 Alternatively, when not using `grunt` (and for production environments) you can run:
 ```bash
-$ node server
+$ NODE_CONFIG_DIR=application/config node ./bin/www
 ```
+`NODE_CONFIG_DIR` is a directory that contains application configurations (default.json, development.json, production.json)
+
 Then, open a browser and go to:
 ```bash
 http://localhost:3000

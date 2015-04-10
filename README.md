@@ -1,3 +1,6 @@
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
+
 ## Prerequisite Technologies
 ### Linux
 * *Node.js* - <a href="http://nodejs.org/download/">Download</a> and Install Node.js, nodeschool has free <a href=" http://nodeschool.io/#workshoppers">node tutorials</a> to get you started.
@@ -19,6 +22,28 @@ $ sudo apt-get install nodejs
 ### OSX
 * *Node.js* -  <a href="http://nodejs.org/download/">Download</a> and Install Node.js or use the packages within brew or macports.
 * *git* - Get git <a href="http://git-scm.com/download/mac">from here</a>.
+
+## Prerequisite packages
+* This currently works with grunt..
+
+```
+$ npm install -g grunt-cli
+```
+
+### Invoke node with a task manager
+Run grunt task manager to start the server:
+```bash
+$ grunt
+```
+
+Alternatively, when not using `grunt` (and for production environments) you can run:
+```bash
+$ node server
+```
+Then, open a browser and go to:
+```bash
+http://localhost:3000
+```
 
 
 #### Update NPM or Grunt

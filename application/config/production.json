@@ -1,0 +1,11 @@
+{
+  "mongoDB": {
+    "uri": "mongodb://user:password@localhost:27017",
+    "database": "",
+    "options": {
+      "server": {
+        "auto_reconnect": false
+      }
+    }
+  }
+}

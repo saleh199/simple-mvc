@@ -1,0 +1,15 @@
+{
+  "mongoDB": {
+    "host": "localhost",
+    "port": "27017",
+    "database": "mvctest",
+    "debug": true,
+    "options": {
+      "server": {
+        "auto_reconnect": false
+      },
+      "user": "",
+      "pass": ""
+    }
+  }
+}

@@ -63,7 +63,7 @@ $ npm update -g grunt-cli
 
 
 #### Cleaning NPM cache
-NPM and Bower has a caching system for holding packages that you already installed.
+NPM has a caching system for holding packages that you already installed.
 We found that often cleaning the cache solves some troubles this system creates.
 
 * NPM Clean Cache:

@@ -2,7 +2,9 @@
 
 module.exports = function(mongoose, modelsPath){
 
-  var config = require('config');
+  var config = require('config'),
+      glob = require('glob'),
+      path = require('path');
   var connectionString = 'mongodb://';
 
   if(!mongoose){
@@ -26,7 +28,7 @@ module.exports = function(mongoose, modelsPath){
   });
 
 
-  if(config.mongoDB.debug){
+  if(config.mongoDB.debug === true){
     // use visionmedia/debug module to debug mongoose requests
     var debugMongoose = require('debug')('mongoose');
     mongoose.set('debug', function(collectionName, method, query, doc, options) {
@@ -34,5 +36,17 @@ module.exports = function(mongoose, modelsPath){
     });
   }
 
-  return db;
+  // Autoloading models
+  var files = glob.sync(modelsPath + '**/*.js', {});
+
+  db.models = {};
+
+  files.forEach(function(model){
+    if(process.env.NODE_ENV === 'development'){
+      console.log('Load : ' + model);
+    }
+
+    var modelName = path.basename(model).replace('.js', '');
+    db.models[modelName] = db.model(modelName, require(model)(db));
+  });
 };

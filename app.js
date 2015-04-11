@@ -7,22 +7,15 @@ var logger = require('morgan');
 //var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var database = require('./libs/database')(mongoose, '');
 
-
-//var fs = require('fs');
+// Load Database library
+require('./libs/database')(mongoose, path.join(__dirname + '/application/', 'models'));
 
 var app = express();
 
 var routesPath = 'application/routes/';
 require('./libs/autoload')(app, path.join(__dirname, routesPath));
 
-//autoload routes
-// fs.readdirSync(routesPath).forEach(function(file){
-//   var route = routesPath + file;
-//   console.info('Load route: ' + route);
-//   require(route)(app);
-// });
 
 // view engine setup
 app.set('views', path.join(__dirname + '/application/', 'views'));
